@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<img width="800" src="/docs/images/logo.png" alt="electron-vue-ant">
+<img width="600" src="/docs/images/logo.png" alt="electron-vue-ant">
 <br>
 <br>
 </div>
