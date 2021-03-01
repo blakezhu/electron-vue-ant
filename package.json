@@ -1,0 +1,33 @@
+{
+  "name": "electron-vue-ant",
+  "version": "0.0.1",
+  "description": "A template for electron application using vue and ant design vue framework.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/blakezhu/electron-vue-ant",
+  "keywords": [
+    "Electron",
+    "vue",
+    "ant design vue",
+    "template"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^11.3.0"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.7.4",
+    "axios": "^0.21.1",
+    "css-hot-loader": "^1.4.4",
+    "electron-builder": "^22.9.1",
+    "vue": "^2.6.12",
+    "vue-gemini-scrollbar": "^2.0.1",
+    "vue-loader": "^15.9.6",
+    "vue-router": "^3.5.1",
+    "webpack": "^5.24.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
