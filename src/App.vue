@@ -5,13 +5,13 @@
         <span class="maintitle">Electron-Vue-Ant v0.0.1</span>
         <ul class="controlbtn">
           <li @click="minwin">
-            <icon-font type="icon-zuixiaohua" id="minbtn" />
+            <i class="iconfont icon-zuixiaohua" id="minbtn"></i>
           </li>
           <li @click="maxwin">
-            <icon-font type="icon-zuidahua" id="maxbtn" />
+            <i class="iconfont icon-zuidahua" id="maxbtn"></i>
           </li>
           <li @click="closewin">
-            <icon-font type="icon-closebtn" id="closebtn" />
+            <i class="iconfont icon-closebtn" id="closebtn"></i>
           </li>
         </ul>
       </div>
@@ -30,10 +30,6 @@
 </template>
 
 <script>
-import { Icon } from "ant-design-vue";
-const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: "//at.alicdn.com/t/font_2393601_ki7lf2cualg.js",
-});
 //const { ipcRenderer } = require("electron");
 
 import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
@@ -44,7 +40,6 @@ export default {
   name: "App",
   components: {
     HelloWorld,
-    IconFont,
   },
   methods: {
     minwin() {
@@ -134,5 +129,8 @@ ul {
 .mycard .ant-card-body {
   padding: 10px;
   padding-top: 0 !important;
+}
+.controlbtn .iconfont {
+  font-size: 14px;
 }
 </style>

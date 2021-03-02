@@ -7,6 +7,8 @@ Vue.config.productionTip = false;
 import { Ohyeah } from "vue-ohyeah-scroll";
 Vue.use(Ohyeah);
 
+import "./assets/font/iconfont.css";
+
 new Vue({
   render: (h) => h(App),
 }).$mount("#app");
