@@ -107,6 +107,11 @@ export default {
     callback(key) {
       console.log(key);
     },
+    changeTheme(primaryColor) {
+      window.less.modifyVars({
+        "@primary-color": primaryColor,
+      });
+    },
   },
 };
 </script>
