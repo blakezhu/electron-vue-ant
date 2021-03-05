@@ -17,8 +17,13 @@
       </div>
       <Ohyeah>
         <div class="contenter">
-          <img alt="Vue logo" src="./assets/logo.png" />
-          <HelloWorld msg="Welcome to Your Electron+Vue+Ant-design-vue App." />
+          <div class="logo"><img alt="Vue logo" src="./assets/logo.png" /></div>
+
+          <Mainpage
+            @themechange="changeT"
+            :sendData="themeMode"
+            msg="Welcome to Your Electron+Vue+Ant-design-vue App."
+          />
         </div>
       </Ohyeah>
       <div class="footer">
@@ -34,12 +39,17 @@
 
 import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 const { ipcRenderer } = require("electron");
-import HelloWorld from "./components/HelloWorld.vue";
+import Mainpage from "./page/mainpage.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      themeMode: "normal",
+    };
+  },
   components: {
-    HelloWorld,
+    Mainpage,
   },
   methods: {
     minwin() {
@@ -54,11 +64,45 @@ export default {
       console.log("closewin");
       ipcRenderer.send("closeMainWin");
     },
+    changeT(type) {
+      var options;
+      var normaltheme = {};
+      var darktheme = {
+        "@primary-color": "@blue-6",
+        "@body-background": "#111",
+        "@text-color": "#ccc",
+        "@text-color-secondary": "#999",
+        "@heading-color": "#ccc",
+        "@my-statusbg": "#222",
+        "@component-background": "#181818",
+        "@border-color-base": "hsv(0, 0, 35%)",
+        "@border-color-split": "hsv(0, 0, 25%)",
+        "@background-color-light": "hsv(0, 0, 15%)",
+        "@background-color-base": "hsv(0, 0, 12%)",
+        "@error-color": "@red-8",
+        "@btn-primary-bg": "@blue-8",
+      };
+      if (type == "normal") {
+        options = normaltheme;
+      } else {
+        options = darktheme;
+      }
+      console.log(window.less.modifyVars());
+      window.less
+        .modifyVars(options)
+        .then(() => {
+          console.log("成功");
+        })
+        .catch((error) => {
+          alert("失败");
+          console.log(error);
+        });
+    },
   },
 };
 </script>
 
-<style>
+<style lang="less">
 body {
   overflow: hidden;
 }
@@ -70,17 +114,18 @@ li {
 ul {
   list-style: none;
 }
-#app {
-  text-align: center;
-}
 #container img {
   width: 600px;
+}
+.logo {
+  text-align: center;
 }
 #container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
 .header {
   -webkit-app-region: drag;
   background-color: #3a3a3a;
@@ -95,18 +140,16 @@ ul {
 }
 .contenter {
   flex: 1;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .footer {
-  height: 30px;
   line-height: 30px;
-  background: #f0f0f0;
   display: flex;
   padding: 0 13px;
   justify-content: space-between;
   font-size: 12px;
 }
-
 .controlbtn {
   color: #fff;
   float: right;
